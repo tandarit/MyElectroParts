@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">MyElectroParts</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_project">Add new project</string>
+    <string name="delete_project">Delete project</string>
+    <string-array name="category_arrays">
+        <item>Radio</item>
+        <item>MCU and FPGA</item>
+        <item>Audio</item>
+        <item>Power source</item>
+        <item>Model control</item>
+        <item>Auto electronic</item>
+        <item>Measuring technology</item>
+        <item>Robotic</item>
+        <item>Telephone and GSM</item>
+        <item>Power electronics</item>
+    </string-array>
+
+</resources>
