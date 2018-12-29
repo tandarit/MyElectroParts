@@ -43,7 +43,7 @@ public class MyElectroPartsDbSchema {
         public static final String NAME = "Categories";
         public static final class Cols {
             public static final String KEY = "category_id";
-            public static final String NAME = "name";
+            public static final String NAME = "category_name";
         }
     }
 
@@ -64,6 +64,24 @@ public class MyElectroPartsDbSchema {
             public static final String KEY = "project_category_id";
             public static final String PROJECT_KEY = "project_id";
             public static final String CATEGORY_KEY = "category_id";
+        }
+    }
+
+    /*--------------------------------------------------------------------------------------------------------*
+     *   ProductClass table                                                                                        *
+     * -------------------------------------------------------------------------------------------------------*/
+    public static final String DATABASE_DROP_PRODUCT_CLASS = "DROP TABLE IF EXISTS "+ProductClassTable.NAME+";";
+    public static final String DATABASE_CREATE_PRODUCT_CLASS = "CREATE TABLE IF NOT EXISTS "+ProductClassTable.NAME+"("+
+            ProductClassTable.Cols.KEY+" integer primary key autoincrement, " +
+            ProductClassTable.Cols.PRODUCT_CLASS_NAME + " VARCHAR(75));";
+
+
+
+    public static final class ProductClassTable {
+        public static final String NAME = "ProductClass";
+        public static final class Cols {
+            public static final String KEY = "product_class_id";
+            public static final String PRODUCT_CLASS_NAME = "product_class_name";
         }
     }
 

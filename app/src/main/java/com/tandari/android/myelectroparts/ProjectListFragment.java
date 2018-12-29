@@ -3,11 +3,13 @@ package com.tandari.android.myelectroparts;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,7 +28,9 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -40,12 +44,15 @@ public class ProjectListFragment extends Fragment {
     private RecyclerView mProjectRecyclerView;
     private ProjectListAdapter mProjectListAdapter;
     private List<Project> mProjectList;
+    private Set<Project> mSelectedProjectList;
+    //refresh
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
 
     public ProjectListFragment(SQLiteDatabaseAdapter adapter) {
         mSQLiteDatabaseAdapter=adapter;
         mProjectList=new ArrayList<>();
+        mSelectedProjectList=new HashSet<>();
 
     }
 
@@ -100,7 +107,13 @@ public class ProjectListFragment extends Fragment {
                 return true;
 
             case R.id.delete_project:
-
+                if(!mSelectedProjectList.isEmpty()) {
+                    mSQLiteDatabaseAdapter.removeProjects(mSelectedProjectList);
+                    mSelectedProjectList.clear();
+                    updateUI();
+                }else {
+                    Toast.makeText(getContext(), "Please select at least one item!", Toast.LENGTH_LONG).show();
+                }
 
                 return true;
 
@@ -114,6 +127,7 @@ public class ProjectListFragment extends Fragment {
         View projectView = inflater.inflate(R.layout.fragment_project_list, container, false);
         mProjectRecyclerView=(RecyclerView)projectView.findViewById(R.id.project_list);
         mProjectRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         mSwipeRefreshLayout = (SwipeRefreshLayout) projectView.findViewById(R.id.swipeToRefresh);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
         //Frissités lekezelése
@@ -121,7 +135,7 @@ public class ProjectListFragment extends Fragment {
             @Override
             public void onRefresh() {
 
-
+                updateUI();
 
                 mSwipeRefreshLayout.setRefreshing(false);
             }
@@ -153,6 +167,8 @@ public class ProjectListFragment extends Fragment {
         private TextView mDate;
         private LinearLayout view_container;
 
+        private boolean isSelected=false;
+
         public ProjectListHolder(View itemView) {
             super(itemView);
             view_container=itemView.findViewById(R.id.container);
@@ -166,6 +182,7 @@ public class ProjectListFragment extends Fragment {
             this.mProject = project;
             List<Category> categoryList;
             StringBuffer categoriesString=new StringBuffer();
+            categoriesString.append("| ");
 
             mTitleTextView.setText(mProject.getProjectTitle());
             //Categories write out
@@ -179,13 +196,15 @@ public class ProjectListFragment extends Fragment {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             mDate.setText(dateFormat.format(mProject.getDate()));
         }
+
+
     }
 
     private class ProjectListAdapter extends RecyclerView.Adapter<ProjectListHolder> {
         private Context mContext ;
         private List<Project> mProjectList;
 
-        public ProjectListAdapter(Context context, List projectList) {
+        public ProjectListAdapter(Context context, List<Project> projectList) {
             this.mContext = context;
             this.mProjectList = projectList;
         }
@@ -193,15 +212,28 @@ public class ProjectListFragment extends Fragment {
         @Override
         public ProjectListHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-            View view ;
+            final View view ;
             LayoutInflater mInflater = LayoutInflater.from(mContext);
             view = mInflater.inflate(R.layout.list_item_projectlist, parent,false);
             final ProjectListHolder myViewHolder = new ProjectListHolder(view);
 
-            myViewHolder.view_container.setOnClickListener(new View.OnClickListener() {
+            myViewHolder.view_container.setOnLongClickListener(new View.OnLongClickListener() {
+
                 @Override
-                public void onClick(View v) {
-                    Toast.makeText(getContext(), Integer.toString(myViewHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
+                public boolean onLongClick(View view) {
+                    if(!myViewHolder.isSelected) {
+                        myViewHolder.isSelected=true;
+                        myViewHolder.view_container.setBackgroundColor(Color.rgb(111, 189, 245));
+                        mSelectedProjectList.add(myViewHolder.mProject);
+                    }
+                    else {
+                        myViewHolder.isSelected=false;
+                        myViewHolder.view_container.setBackgroundColor(Color.rgb(255, 255, 255));
+                        mSelectedProjectList.remove(myViewHolder.mProject);
+                    }
+
+
+                    return false;
                 }
             });
             // click listener here
@@ -228,6 +260,7 @@ public class ProjectListFragment extends Fragment {
         public void setProjects(List<Project> projects) {
             mProjectList = projects;
         }
+
 
     }
 

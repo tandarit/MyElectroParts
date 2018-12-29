@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:clickable="true"
+    android:layout_margin="8dp"
+    android:background="?android:attr/selectableItemBackground">
 
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#fff"
     android:layout_marginTop="5dp"
@@ -10,6 +19,7 @@
     android:layout_height="150dp"
     android:id="@+id/container"
     >
+
 
     <ImageView
         android:src="@drawable/not_loaded"
@@ -63,3 +73,4 @@
 
     </LinearLayout>
 </LinearLayout>
+</android.support.v7.widget.CardView>
