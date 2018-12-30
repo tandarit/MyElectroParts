@@ -33,11 +33,11 @@ import static com.tandari.android.myelectroparts.Database.MyElectroPartsDbSchema
 import static com.tandari.android.myelectroparts.Database.MyElectroPartsDbSchema.ProjectTable.Cols.UUID;
 import static com.tandari.android.myelectroparts.Database.MyElectroPartsDbSchema.VERSION;
 
-public class SQLiteDatabaseAdapter extends SQLiteOpenHelper {
+public class SQLiteDatabaseAdapter extends MyElectroPartBaseHelper {
     private Context mContext;
 
     public SQLiteDatabaseAdapter(Context context) {
-        super(context, DATABASE_NAME, null, VERSION);
+        super(context);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
