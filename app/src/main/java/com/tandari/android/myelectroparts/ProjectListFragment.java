@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tandari.android.myelectroparts.Adapters.ProjectListAdapter;
 import com.tandari.android.myelectroparts.Models.Category;
 import com.tandari.android.myelectroparts.Models.Project;
 
@@ -150,14 +151,14 @@ public class ProjectListFragment extends Fragment {
         this.mProjectList=mSQLiteDatabaseAdapter.getAllProjects();
 
         if (mProjectListAdapter == null) {
-            mProjectListAdapter = new ProjectListAdapter(getContext(), mProjectList);
+            mProjectListAdapter = new ProjectListAdapter(getContext(), mProjectList, mSelectedProjectList, mSQLiteDatabaseAdapter);
             mProjectRecyclerView.setAdapter(mProjectListAdapter);
         } else {
             mProjectListAdapter.setProjects(mProjectList);
             mProjectListAdapter.notifyDataSetChanged();
         }
     }
-
+/*
     private class ProjectListHolder extends RecyclerView.ViewHolder {
         private Project mProject;
 
@@ -264,5 +265,5 @@ public class ProjectListFragment extends Fragment {
 
     }
 
-
+*/
 }

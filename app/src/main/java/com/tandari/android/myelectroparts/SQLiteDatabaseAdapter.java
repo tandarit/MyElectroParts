@@ -39,58 +39,6 @@ public class SQLiteDatabaseAdapter extends MyElectroPartBaseHelper {
     public SQLiteDatabaseAdapter(Context context) {
         super(context);
     }
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL(DATABASE_CREATE_PROJECTS);
-        db.execSQL(DATABASE_CREATE_CATEGORIES);
-        db.execSQL(DATABASE_CREATE_PROJECTCATEGORY);
-        db.execSQL(DATABASE_CREATE_PRODUCT_CLASS);
-
-        //Category fill
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.CategoryTable.NAME +"("+MyElectroPartsDbSchema.CategoryTable.Cols.NAME +") VALUES('Radio');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.CategoryTable.NAME +"("+MyElectroPartsDbSchema.CategoryTable.Cols.NAME +") VALUES('MCU and FPGA');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.CategoryTable.NAME +"("+MyElectroPartsDbSchema.CategoryTable.Cols.NAME +") VALUES('Audio');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.CategoryTable.NAME +"("+MyElectroPartsDbSchema.CategoryTable.Cols.NAME +") VALUES('Power source');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.CategoryTable.NAME +"("+MyElectroPartsDbSchema.CategoryTable.Cols.NAME +") VALUES('Model control');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.CategoryTable.NAME +"("+MyElectroPartsDbSchema.CategoryTable.Cols.NAME +") VALUES('Auto electronic');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.CategoryTable.NAME +"("+MyElectroPartsDbSchema.CategoryTable.Cols.NAME +") VALUES('Measuring technology');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.CategoryTable.NAME +"("+MyElectroPartsDbSchema.CategoryTable.Cols.NAME +") VALUES('Robot');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.CategoryTable.NAME +"("+MyElectroPartsDbSchema.CategoryTable.Cols.NAME +") VALUES('Telephone');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.CategoryTable.NAME +"("+MyElectroPartsDbSchema.CategoryTable.Cols.NAME +") VALUES('Power electronic');");
-
-        //ProductClass fill
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Passive Components');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Discrate Components');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Integrate Semiconductor');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Coolers');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Cabels');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('PCBs');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Mechanical Parts');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Batteries');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Chemicals');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Sensors');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Fuses');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Switch and Buttons');");
-        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Tools');");
-
-
-
-
-    }
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(MyElectroPartsDbSchema.DATABASE_DROP_PROJECTS);
-        db.execSQL(MyElectroPartsDbSchema.DATABASE_CREATE_PROJECTS);
-
-        db.execSQL(MyElectroPartsDbSchema.DATABASE_DROP_CATEGORIES);
-        db.execSQL(MyElectroPartsDbSchema.DATABASE_CREATE_CATEGORIES);
-
-        db.execSQL(MyElectroPartsDbSchema.DATABASE_DROP_PROJECTCATEGORY);
-        db.execSQL(MyElectroPartsDbSchema.DATABASE_CREATE_PROJECTCATEGORY);
-
-        db.execSQL(MyElectroPartsDbSchema.DATABASE_DROP_PROJECTCATEGORY);
-        db.execSQL(MyElectroPartsDbSchema.DATABASE_CREATE_PROJECTCATEGORY);
-    }
 
     public List<Project> getAllProjects() {
         SQLiteDatabase db=getWritableDatabase();
