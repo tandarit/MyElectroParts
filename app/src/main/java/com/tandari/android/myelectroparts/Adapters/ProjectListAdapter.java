@@ -50,8 +50,6 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListHolder> 
                     myViewHolder.getView_container().setBackgroundColor(Color.rgb(255, 255, 255));
                     mSelectedProjectList.remove(myViewHolder.getProject());
                 }
-
-
                 return false;
             }
         });
@@ -63,7 +61,6 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListHolder> 
     public void onBindViewHolder(ProjectListHolder holder, final int position) {
         Project project = mProjectList.get(position);
         holder.bind(project);
-
 
         // load image from the internet using Glide
         //Glide.with(mContext).load(mData.get(position).getImage_url()).apply(options).into(holder.AnimeThumbnail);

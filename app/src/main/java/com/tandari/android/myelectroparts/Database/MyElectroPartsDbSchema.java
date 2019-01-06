@@ -85,4 +85,27 @@ public class MyElectroPartsDbSchema {
         }
     }
 
+    /*--------------------------------------------------------------------------------------------------------*
+     *   ProductSubClass table                                                                                        *
+     * -------------------------------------------------------------------------------------------------------*/
+    public static final String DATABASE_DROP_PRODUCT_SUB_CLASS = "DROP TABLE IF EXISTS "+ProductSubClassTable.NAME+";";
+    public static final String DATABASE_CREATE_PRODUCT_SUB_CLASS = "CREATE TABLE IF NOT EXISTS "+ProductSubClassTable.NAME+"("+
+            ProductSubClassTable.Cols.KEY+" integer primary key autoincrement, " +
+            ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME + " VARCHAR(75)," +
+            ProductSubClassTable.Cols.PRODUCT_CLASS_KEY + "integer);";
+
+
+
+    public static final class ProductSubClassTable {
+        public static final String NAME = "ProductSubClass";
+        public static final class Cols {
+            public static final String KEY = "product_sub_class_id";
+            public static final String PRODUCT_SUB_CLASS_NAME = "product_sub_class_name";
+            public static final String PRODUCT_CLASS_KEY = "product_class_key";
+        }
+    }
+
 }
+
+
+

@@ -11,6 +11,7 @@ import android.util.Log;
 import com.tandari.android.myelectroparts.Database.MyElectroPartBaseHelper;
 import com.tandari.android.myelectroparts.Database.MyElectroPartsDbSchema;
 import com.tandari.android.myelectroparts.Models.Category;
+import com.tandari.android.myelectroparts.Models.ProductClass;
 import com.tandari.android.myelectroparts.Models.Project;
 
 import java.text.DateFormat;
@@ -164,6 +165,30 @@ public class SQLiteDatabaseAdapter extends MyElectroPartBaseHelper {
         }
         db.close();
     }
+
+    public List<ProductClass> getAllProductClass() {
+        SQLiteDatabase db=getWritableDatabase();
+        List<ProductClass> productClasses = new ArrayList<>();
+
+        String selectString="SELECT * FROM "+MyElectroPartsDbSchema.ProductClassTable.NAME;
+        Cursor cursor=db.rawQuery(selectString, null);
+        if (cursor.moveToFirst()) {
+            do {
+                ProductClass productClass=new ProductClass();
+
+                productClass.setDatabaseId(cursor.getLong(cursor.getColumnIndex(MyElectroPartsDbSchema.ProductClassTable.Cols.KEY)));
+                productClass.setTitle(cursor.getString(cursor.getColumnIndex(MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME)));
+
+
+
+                productClasses.add(productClass);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+        return productClasses;
+    }
+
+
 
 
 

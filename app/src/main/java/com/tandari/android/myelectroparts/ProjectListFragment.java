@@ -126,6 +126,7 @@ public class ProjectListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View projectView = inflater.inflate(R.layout.fragment_project_list, container, false);
+
         mProjectRecyclerView=(RecyclerView)projectView.findViewById(R.id.project_list);
         mProjectRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -158,112 +159,4 @@ public class ProjectListFragment extends Fragment {
             mProjectListAdapter.notifyDataSetChanged();
         }
     }
-/*
-    private class ProjectListHolder extends RecyclerView.ViewHolder {
-        private Project mProject;
-
-        private TextView mTitleTextView;
-        private TextView mProjectCategory;
-        private TextView mRating;
-        private TextView mDate;
-        private LinearLayout view_container;
-
-        private boolean isSelected=false;
-
-        public ProjectListHolder(View itemView) {
-            super(itemView);
-            view_container=itemView.findViewById(R.id.container);
-            mTitleTextView = (TextView) itemView.findViewById(R.id.project_name);
-            mProjectCategory = (TextView) itemView.findViewById(R.id.project_category);
-            mRating = (TextView) itemView.findViewById(R.id.rating);
-            mDate = (TextView) itemView.findViewById(R.id.project_date);
-        }
-
-        public void bind(Project project) {
-            this.mProject = project;
-            List<Category> categoryList;
-            StringBuffer categoriesString=new StringBuffer();
-            categoriesString.append("| ");
-
-            mTitleTextView.setText(mProject.getProjectTitle());
-            //Categories write out
-            categoryList=mSQLiteDatabaseAdapter.getProjectCategories(mProject.getDatabaseId());
-            for(int i=0; i<categoryList.size(); i++) {
-                categoriesString.append(categoryList.get(i).getCategoryName()+" | ");
-            }
-            mProjectCategory.setText(categoriesString);
-
-            mRating.setText(Integer.toString(mProject.getProjectDifficulty()));
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            mDate.setText(dateFormat.format(mProject.getDate()));
-        }
-
-
-    }
-
-    private class ProjectListAdapter extends RecyclerView.Adapter<ProjectListHolder> {
-        private Context mContext ;
-        private List<Project> mProjectList;
-
-        public ProjectListAdapter(Context context, List<Project> projectList) {
-            this.mContext = context;
-            this.mProjectList = projectList;
-        }
-
-        @Override
-        public ProjectListHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-            final View view ;
-            LayoutInflater mInflater = LayoutInflater.from(mContext);
-            view = mInflater.inflate(R.layout.list_item_projectlist, parent,false);
-            final ProjectListHolder myViewHolder = new ProjectListHolder(view);
-
-            myViewHolder.view_container.setOnLongClickListener(new View.OnLongClickListener() {
-
-                @Override
-                public boolean onLongClick(View view) {
-                    if(!myViewHolder.isSelected) {
-                        myViewHolder.isSelected=true;
-                        myViewHolder.view_container.setBackgroundColor(Color.rgb(111, 189, 245));
-                        mSelectedProjectList.add(myViewHolder.mProject);
-                    }
-                    else {
-                        myViewHolder.isSelected=false;
-                        myViewHolder.view_container.setBackgroundColor(Color.rgb(255, 255, 255));
-                        mSelectedProjectList.remove(myViewHolder.mProject);
-                    }
-
-
-                    return false;
-                }
-            });
-            // click listener here
-            return myViewHolder;
-        }
-
-        @Override
-        public void onBindViewHolder(ProjectListHolder holder, final int position) {
-            Project project = mProjectList.get(position);
-            holder.bind(project);
-
-
-            // load image from the internet using Glide
-            //Glide.with(mContext).load(mData.get(position).getImage_url()).apply(options).into(holder.AnimeThumbnail);
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return mProjectList.size();
-        }
-
-        //Ez a frissítések miatt kell!
-        public void setProjects(List<Project> projects) {
-            mProjectList = projects;
-        }
-
-
-    }
-
-*/
 }

@@ -18,18 +18,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private SQLiteDatabaseAdapter mSQLiteDatabaseAdapter;
-
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
-    /*
-    private int[] tabIcons = {
-            R.drawable.ic_tab_favourite,
-            R.drawable.ic_tab_call,
-            R.drawable.ic_tab_contacts
-    };
-    */
     public MainActivity() {
 
     }
@@ -58,19 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new ProjectListFragment(mSQLiteDatabaseAdapter), "Projects List");
-        adapter.addFragment(new MyPartsFragment(), "My Parts");
+        adapter.addFragment(new MyPartsFragment(mSQLiteDatabaseAdapter), "My Parts");
         adapter.addFragment(new WishListFragment(), "Wish List");
         viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(adapter);
     }
 
-    private void setupTabIcons() {
-        /*
-        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
-        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
-        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
-        */
-    }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private List<Fragment> mFragmentList = new ArrayList<>();
