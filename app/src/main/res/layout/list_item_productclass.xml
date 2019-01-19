@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/card_view_productclass"
-    android:layout_margin="5dp"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:id="@+id/product_class_container">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:selectableItemBackground"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:id="@+id/product_class_container"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
         <TextView
             android:id="@+id/product_class_textview"
@@ -20,15 +15,16 @@
             android:textColor="#2d2d2d"
             android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="Part Class"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/sub_class_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="160dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
 
-
-    </LinearLayout>
-
-</android.support.v7.widget.CardView>
+            />
+</LinearLayout>

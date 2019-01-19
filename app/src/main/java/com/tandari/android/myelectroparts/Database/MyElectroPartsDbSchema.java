@@ -92,7 +92,7 @@ public class MyElectroPartsDbSchema {
     public static final String DATABASE_CREATE_PRODUCT_SUB_CLASS = "CREATE TABLE IF NOT EXISTS "+ProductSubClassTable.NAME+"("+
             ProductSubClassTable.Cols.KEY+" integer primary key autoincrement, " +
             ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME + " VARCHAR(75)," +
-            ProductSubClassTable.Cols.PRODUCT_CLASS_KEY + "integer);";
+            ProductSubClassTable.Cols.PRODUCT_CLASS_KEY + " integer);";
 
 
 
@@ -104,7 +104,6 @@ public class MyElectroPartsDbSchema {
             public static final String PRODUCT_CLASS_KEY = "product_class_key";
         }
     }
-
 }
 
 

@@ -54,8 +54,10 @@ public class MyElectroPartBaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Cabels');");
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('PCBs');");
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Mechanical Parts');");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Connectors and sockets');");
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Batteries');");
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Chemicals');");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Optoelectronics');");
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Sensors');");
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Fuses');");
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductClassTable.NAME+"("+MyElectroPartsDbSchema.ProductClassTable.Cols.PRODUCT_CLASS_NAME +") VALUES('Switch and Buttons');");
@@ -63,8 +65,6 @@ public class MyElectroPartBaseHelper extends SQLiteOpenHelper {
 
 
         //ProductSubClass fill
-        //ToDo: kitolteni
-
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Resistors', 1);");
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Potentiometers', 1);");
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Capacitors', 1);");
@@ -85,6 +85,75 @@ public class MyElectroPartBaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Processors', 3);");
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Peripheria IC', 3);");
         db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Memories', 3);");
+
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Active coolers', 4);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Passive coolers', 4);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Pastes', 4);");
+
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Cabels', 5);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Mounted cabels', 5);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Cable accessories', 5);");
+
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('PCB plates', 6);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Prototype PCB plates', 6);");
+
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Screws and nuts', 7);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Spacers', 7);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Instrument boxes', 7);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Others', 7);");
+
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Flat cabels connectors an sockets for PCB', 8);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Audio video connectors', 8);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Pin row and socket for PCB', 8);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('RF connectors', 8);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Bananna connectors', 8);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Communication connectors', 8);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Pressable connectors', 8);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Power network connectors', 8);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Industrial connectors', 8);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Terminal block for PCB', 8);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('DC power supply connectors', 8);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Ferrules and sandals', 8);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Socket for ICs and fuses', 8);");
+
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Non-rechargable batteries', 9);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Rechargable batteries', 9);");
+
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Cleaning chemical', 10);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Protectors and insulating chemicals', 10);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('PCB creator chemicals', 10);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Soldering aid chemicals', 10);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Soldering tin', 10);");
+
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Displays', 11);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Optocouplers', 11);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('LEDS', 11);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Others optos', 11);");
+
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Mechanics sensors', 12);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Temperature sensors', 12);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Magnetic field sensors', 12);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Acceleration sensors', 12);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Pressure sensors', 12);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Humidity sensors', 12);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Encoders', 12);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Ultrasonic sensors', 12);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Optical sensors', 12);");
+
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Regenerative fuses', 13);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Non-Regenerative fuses', 13);");
+
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Press buttons', 14);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Switchs', 14);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Solid State Relay', 14);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Traditional relay', 14);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Reed relay', 14);");
+
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Soldering station', 15);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Tools', 15);");
+        db.execSQL("INSERT INTO "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+"("+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME+", "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+") VALUES('Measurement tools', 15);");
+
+
     }
 
     @Override

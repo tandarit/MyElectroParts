@@ -3,9 +3,11 @@ package com.tandari.android.myelectroparts.Adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.tandari.android.myelectroparts.Models.ProductClass;
 import com.tandari.android.myelectroparts.Models.ProductSubClass;
@@ -17,35 +19,26 @@ import java.util.List;
 public class ProductSubClassAdapter extends RecyclerView.Adapter<ProductSubClassHolder> {
     private Context mContext ;
     private List<ProductSubClass> mProductSubClassList;
-    private SQLiteDatabaseAdapter mSQLiteDatabaseAdapter;
 
-    public ProductSubClassAdapter(Context context, List<ProductSubClass> productSubClassList, SQLiteDatabaseAdapter sqLiteDatabaseAdapter) {
+    public ProductSubClassAdapter(Context context, List<ProductSubClass> productSubClassList) {
         this.mContext = context;
         this.mProductSubClassList = productSubClassList;
-        this.mSQLiteDatabaseAdapter = sqLiteDatabaseAdapter;
     }
 
     @NonNull
     @Override
     public ProductSubClassHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        final View view ;
-        LayoutInflater mInflater = LayoutInflater.from(mContext);
-        view = mInflater.inflate(R.layout.list_item_productsubclass, viewGroup,false);
-        final ProductSubClassHolder myViewHolder = new ProductSubClassHolder(view, mSQLiteDatabaseAdapter);
-        myViewHolder.getMainLinearLayout().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //ide jön az új activity ami kilistáza a választott dolgot.
-            }
-        });
-
+        View view ;
+        LayoutInflater mInflater = LayoutInflater.from(viewGroup.getContext());
+        view = mInflater.inflate(R.layout.list_item_productsubclass, null);
+        ProductSubClassHolder myViewHolder = new ProductSubClassHolder(view);
         return myViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductSubClassHolder productSubClassHolder, int i) {
         ProductSubClass productSubClass = mProductSubClassList.get(i);
-        productSubClassHolder.bind(productSubClass);
+        productSubClassHolder.getProductSubClassTextView().setText(productSubClass.getProductSubClassName());
     }
 
     @Override

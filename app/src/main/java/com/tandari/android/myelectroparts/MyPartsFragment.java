@@ -15,8 +15,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.tandari.android.myelectroparts.Adapters.MyPartsAdapter;
+import com.tandari.android.myelectroparts.Adapters.ProductSubClassAdapter;
 import com.tandari.android.myelectroparts.Adapters.ProjectListAdapter;
 import com.tandari.android.myelectroparts.Models.ProductClass;
+import com.tandari.android.myelectroparts.Models.ProductSubClass;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,7 +30,6 @@ public class MyPartsFragment extends Fragment {
     private List<ProductClass> mProductClassList;
     private MyPartsAdapter mMyPartsAdapter;
     private RecyclerView mProductClassRecyclerView;
-    private RecyclerView mProductSubClassRecyclerView;
 
     public MyPartsFragment(SQLiteDatabaseAdapter adapter) {
         mSQLiteDatabaseAdapter=adapter;
@@ -54,9 +55,6 @@ public class MyPartsFragment extends Fragment {
         mProductClassRecyclerView = (RecyclerView)myPartsView.findViewById(R.id.product_class_recyclerview);
         mProductClassRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        mProductSubClassRecyclerView = (RecyclerView)myPartsView.findViewById(R.id.sub_class_recyclerView);
-        mProductSubClassRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
 
         updateUI();
 
@@ -64,20 +62,22 @@ public class MyPartsFragment extends Fragment {
     }
 
     private void updateUI() {
-        this.mProductClassList=mSQLiteDatabaseAdapter.getAllProductClass();
+        mProductClassList=mSQLiteDatabaseAdapter.getAllProductClass();
 
-        mMyPartsAdapter = new MyPartsAdapter(getContext(), mProductClassList, mSQLiteDatabaseAdapter);
+        for(int i=0; i<mProductClassList.size(); i++) {
+            mProductClassList.get(i).setmProductSubClassList(mSQLiteDatabaseAdapter.getAllProductSubClass(mProductClassList.get(i).getDatabaseId()));
+        }
+
+        mMyPartsAdapter = new MyPartsAdapter(getContext(), mProductClassList);
         mProductClassRecyclerView.setAdapter(mMyPartsAdapter);
 
 
         if (mMyPartsAdapter == null) {
-            mMyPartsAdapter = new MyPartsAdapter(getContext(), mProductClassList, mSQLiteDatabaseAdapter);
+            mMyPartsAdapter = new MyPartsAdapter(getContext(), mProductClassList);
             mProductClassRecyclerView.setAdapter(mMyPartsAdapter);
         } else {
             mMyPartsAdapter.setProductClass(mProductClassList);
             mMyPartsAdapter.notifyDataSetChanged();
         }
-
-
     }
 }

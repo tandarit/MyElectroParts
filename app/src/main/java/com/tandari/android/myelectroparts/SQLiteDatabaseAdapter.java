@@ -12,6 +12,7 @@ import com.tandari.android.myelectroparts.Database.MyElectroPartBaseHelper;
 import com.tandari.android.myelectroparts.Database.MyElectroPartsDbSchema;
 import com.tandari.android.myelectroparts.Models.Category;
 import com.tandari.android.myelectroparts.Models.ProductClass;
+import com.tandari.android.myelectroparts.Models.ProductSubClass;
 import com.tandari.android.myelectroparts.Models.Project;
 
 import java.text.DateFormat;
@@ -188,7 +189,27 @@ public class SQLiteDatabaseAdapter extends MyElectroPartBaseHelper {
         return productClasses;
     }
 
+    public List<ProductSubClass> getAllProductSubClass(long productId) {
+        SQLiteDatabase db=getWritableDatabase();
+        List<ProductSubClass> productSubClasses = new ArrayList<>();
 
+        String selectString="SELECT * FROM "+MyElectroPartsDbSchema.ProductSubClassTable.NAME+" WHERE "+MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY+"="+productId;
+        Cursor cursor=db.rawQuery(selectString, null);
+        if (cursor.moveToFirst()) {
+            do {
+                ProductSubClass productSubClass=new ProductSubClass();
+
+                productSubClass.setProductSubClassID(cursor.getLong(cursor.getColumnIndex(MyElectroPartsDbSchema.ProductSubClassTable.Cols.KEY)));
+                productSubClass.setProductSubClassName(cursor.getString(cursor.getColumnIndex(MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_SUB_CLASS_NAME)));
+                productSubClass.setProductClassID(cursor.getLong(cursor.getColumnIndex(MyElectroPartsDbSchema.ProductSubClassTable.Cols.PRODUCT_CLASS_KEY)));
+
+                productSubClasses.add(productSubClass);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+
+        return productSubClasses;
+    }
 
 
 

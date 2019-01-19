@@ -1,15 +1,20 @@
 package com.tandari.android.myelectroparts.Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProductClass {
     private String mTitle;
     private long mDatabaseId;
+    private List<ProductSubClass> mProductSubClassList;
 
     public ProductClass() {
 
     }
 
-    public ProductClass(long id) {
-        this.mDatabaseId = id;
+    public ProductClass(String title, ArrayList<ProductSubClass> productSubClasses) {
+        this.mTitle = title;
+        this.mProductSubClassList = productSubClasses;
     }
 
     public String getTitle() {
@@ -26,5 +31,14 @@ public class ProductClass {
 
     public void setDatabaseId(long databaseId) {
         mDatabaseId = databaseId;
+    }
+
+
+    public List<ProductSubClass> getmProductSubClassList() {
+        return mProductSubClassList;
+    }
+
+    public void setmProductSubClassList(List<ProductSubClass> mProductSubClassList) {
+        this.mProductSubClassList = mProductSubClassList;
     }
 }

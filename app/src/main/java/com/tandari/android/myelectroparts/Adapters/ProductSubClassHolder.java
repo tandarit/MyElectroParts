@@ -1,9 +1,12 @@
 package com.tandari.android.myelectroparts.Adapters;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,28 +15,26 @@ import com.tandari.android.myelectroparts.Models.ProductSubClass;
 import com.tandari.android.myelectroparts.R;
 import com.tandari.android.myelectroparts.SQLiteDatabaseAdapter;
 
+import java.util.List;
+
 public class ProductSubClassHolder extends RecyclerView.ViewHolder {
     private TextView mProductSubClassTextView;
+    private ImageView mProductSubClassImageView;
     private ProductSubClass mProductSubClass;
-    private CardView mCardView;
-    private SQLiteDatabaseAdapter mSQLiteDatabaseAdapter;
-    private LinearLayout mMainLinearLayout;
 
-    public LinearLayout getMainLinearLayout() {
-        return mMainLinearLayout;
-    }
 
-    public ProductSubClassHolder(@NonNull View itemView, SQLiteDatabaseAdapter sqlAdapter) {
+    //Maybenot gonna be suitable for this application because of theconstructor's parameter have not been changed!!!
+    public ProductSubClassHolder(@NonNull View itemView) {
         super(itemView);
         mProductSubClassTextView = (TextView) itemView.findViewById(R.id.product_sub_class_textview);
+        mProductSubClassImageView = (ImageView) itemView.findViewById(R.id.product_sub_class_imageview);
+
     }
 
     public void bind(ProductSubClass productSubClass) {
         this.mProductSubClass=productSubClass;
         this.mProductSubClassTextView.setText(mProductSubClass.getProductSubClassName());
     }
-
-
 
     public TextView getProductSubClassTextView() {
         return mProductSubClassTextView;
@@ -43,7 +44,7 @@ public class ProductSubClassHolder extends RecyclerView.ViewHolder {
         mProductSubClassTextView = productSubClassTextView;
     }
 
-    public ProductSubClass getProductClass() {
+    public ProductSubClass getProductSubClass() {
         return mProductSubClass;
     }
 
@@ -51,19 +52,12 @@ public class ProductSubClassHolder extends RecyclerView.ViewHolder {
         mProductSubClass = productSubClass;
     }
 
-    public CardView getCardView() {
-        return mCardView;
+    public ImageView getmProductSubClassImageView() {
+        return mProductSubClassImageView;
     }
 
-    public void setCardView(CardView cardView) {
-        mCardView = cardView;
+    public void setmProductSubClassImageView(ImageView mProductSubClassImageView) {
+        this.mProductSubClassImageView = mProductSubClassImageView;
     }
 
-    public SQLiteDatabaseAdapter getSQLiteDatabaseAdapter() {
-        return mSQLiteDatabaseAdapter;
-    }
-
-    public void setSQLiteDatabaseAdapter(SQLiteDatabaseAdapter SQLiteDatabaseAdapter) {
-        mSQLiteDatabaseAdapter = SQLiteDatabaseAdapter;
-    }
 }
