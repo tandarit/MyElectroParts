@@ -5,6 +5,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_project">Add new project</string>
     <string name="delete_project">Delete project</string>
+    <string name="projects">Projects</string>
+    <string name="my_parts">My Parts</string>
+    <string name="wish_list">Wish List</string>
+
+
     <string-array name="category_arrays">
         <item>Radio</item>
         <item>MCU and FPGA</item>
